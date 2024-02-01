@@ -1,10 +1,14 @@
 package org.example;
 
+import java.util.Arrays;
+
 public class PyramidSort {
     public void sort(int[] arr){
         // Построение кучи (перегруппируем массив)
         for (int i = arr.length / 2 - 1; i >= 0 ; i--){
             heapify(arr, arr.length, i);
+            
+            //System.out.println(Arrays.toString(arr));
         }
 
         // Один за другим извлекаем элементы из кучи
@@ -13,6 +17,8 @@ public class PyramidSort {
             int temp = arr[0];
             arr[0] = arr[i];
             arr[i]= temp;
+
+            //System.out.println(Arrays.toString(arr));
 
             heapify(arr, i, 0);
         }
@@ -32,10 +38,9 @@ public class PyramidSort {
         if(largest != root){
             int temp = arr[root];
             arr[root] = arr[largest];
-            arr[largest]= temp;
+            arr[largest] = temp;
 
             heapify(arr, sizePyramid, largest); //сравниваем для следущего (largest) индекса
         }
-
     }
 }
